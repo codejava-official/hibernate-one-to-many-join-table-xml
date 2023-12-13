@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="net.codejava.hibernate">
+	<class name="Article" table="ARTICLE">
+		<id name="id" column="ARTICLE_ID">
+			<generator class="native"/>
+		</id>
+		<property name="title" column="TITLE" />
+		<property name="description" column="DESCRIPTION" />
+		<property name="keywords" column="KEYWORDS" />
+		<property name="content" column="CONTENT" />
+
+		<join table="CategoryArticle" inverse="true">
+			<key column="ARTICLE_ID"/>
+			<many-to-one name="category" column="CATEGORY_ID" not-null="true"/>
+		</join>
+	</class>	
+</hibernate-mapping>
